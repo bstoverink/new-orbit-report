@@ -1,1 +1,25 @@
-<p>orbit-list works!</p>
+<h3>Orbit Report</h3>
+<table>
+   <tr class="header-row">
+      <th class="sortable" (click)='sort("name")'>Name</th>
+      <th class="sortable" (click)='sort("type")'>Type</th>
+      <th>Operational</th>
+      <th>orbitType</th>
+      <th>launchDate</th>
+   </tr>
+  
+   <tr *ngFor ="let satellite of satellites">
+       <td>{{satellite.name}}</td>
+       <div *ngIf = "satellite.type === 'Space Debris'; else satellitetype">
+         <td class = "warning">{{satellite.type}}</td>
+       </div>
+       <ng-template #satellitetype>
+         <td>{{satellite.type}}</td>
+       </ng-template>
+       <td>{{satellite.operational}}</td>
+       <td>{{satellite.orbitType}}</td>
+       <td>{{satellite.launchDate}}</td>
+
+   </tr>
+</table>
+
